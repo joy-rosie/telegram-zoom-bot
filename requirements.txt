@@ -1,0 +1,3 @@
+zoomus
+python-telegram-bot
+python-dotenv
