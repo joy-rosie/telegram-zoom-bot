@@ -1,6 +1,8 @@
 name: Telegram Zoom Bot
 
 on:
+  push:
+    branches: [ master ]
   schedule:
     - cron:  '*/60 * * * *'
 
