@@ -32,4 +32,4 @@ jobs:
         ZOOM_USER_ID: ${{ secrets.ZOOM_USER_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      run: python -m main.py
+      run: python -m main
