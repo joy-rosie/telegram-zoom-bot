@@ -1,0 +1,33 @@
+name: Telegram Zoom Bot
+
+on:
+  schedule:
+    - cron:  '*/60 * * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r frozen_requirements.txt
+        
+    - name: Run the main file
+      env:
+        ZOOM_API_KEY: ${{ secrets.ZOOM_API_KEY }}
+        ZOOM_API_SECRET: ${{ secrets.ZOOM_API_SECRET }}
+        ZOOM_USER_ID: ${{ secrets.ZOOM_USER_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: python -m main.py
